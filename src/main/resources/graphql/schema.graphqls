@@ -1,0 +1,36 @@
+type Query{
+    authors : [Author]
+    authorById (id : ID!) : Author
+    book(id:ID!) :Book
+    allBooks : [Book]
+}
+
+type Mutation {
+    addBook(book : BookInput) : Book!
+}
+
+input BookInput {
+    authorId : ID!
+    title : String!
+    publisher : String
+}
+
+
+type Author {
+    id : ID!
+    name : String! @uppercase
+    books : [Book]
+    dob : Date
+}
+
+type Book{
+    id: ID!
+    title:String!
+    publisher : String
+
+}
+
+
+scalar Date
+
+directive @uppercase on FIELD_DEFINITION
